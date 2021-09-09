@@ -29,18 +29,6 @@ def home():
 def about():
     return render_template('about.html', title= 'About')
 
-@application.route('/register', methods= ['GET', 'POST'])
-def register():
-    form= RegistrationForm()
-    if form.validate_on_submit():
-        flash(f'Account Created for {form.username.data}!', 'success')      ## Creating a Flash Message
-        return redirect(url_for('home'))                                    ## If success then Redirect to home page
-    return render_template('register.html', title= 'Register', form= form)
-
-@application.route('/login')
-def login():
-    form= LoginForm()
-    return render_template('login.html', title= 'Login', form= form)
 
 if __name__ == '__main__':
     application.run(host= '127.0.0.1', port= 5000, debug = True)  
